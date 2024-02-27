@@ -10,13 +10,13 @@
 import { createPrompt } from 'bun-promptx'
 
 
-function main(boardWidthInt, boardHeightInt) {
+function main(boardWidthFloat, boardHeightFloat) {
   // error check
   let validInput = true 
-  if (isNaN(boardWidthInt) == true || boardWidthInt < 0) {
+  if (isNaN(boardWidthFloat) == true || boardWidthFloat < 0) {
     validInput = false
     console.log("Invalid input.")
-  } else if (isNaN(boardWidthInt) == true || boardWidthInt < 0) {
+  } else if (isNaN(boardHeightFloat) == true || boardHeightFloat < 0) {
     validInput = false
     console.log("Invalid input.")
   }
@@ -24,7 +24,7 @@ function main(boardWidthInt, boardHeightInt) {
 }
 
 
-function boardFoot(boardWidthInt, boardHeightInt, validInput) {
+function boardFoot(boardWidthFloat, boardHeightFloat) {
   const boardLength = 144 / (boardWidthInt * boardHeightInt)
   console.log('The wood should be ${boardLength} inch(es) long.')
 }
@@ -32,9 +32,9 @@ function boardFoot(boardWidthInt, boardHeightInt, validInput) {
 
 // input
 const boardWidth = createPrompt("Enter the width(inches): ")
-const boardWidthInt = parseInt(boardWidth.value || "-1")
+const boardWidthFloat = parseFloat(boardWidth.value || "-1")
 const boardHeight = createPrompt("Enter the height(inches):")
-const boardHeightInt = parseInt(boardHeight.value || "-1")
+const boardHeightFloat = parseFloat(boardHeight.value || "-1")
 
 // Process
 main(boardWidthInt, boardHeightInt)
