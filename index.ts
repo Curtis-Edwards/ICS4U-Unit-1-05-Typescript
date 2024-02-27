@@ -10,10 +10,9 @@
 import { createPrompt } from 'bun-promptx'
 
 
-function main(boardWidth, boardHeight) {
+function main(boardWidthInt, boardHeightInt) {
+  // error check
   let validInput = true 
-  const boardWidthInt = parseInt(boardWidth.value || "-1")
-  const boardHeightInt = parseInt(boardHeight.value || "-1")
   if (isNaN(boardWidthInt) == true || boardWidthInt < 0) {
     validInput = false
     console.log("Invalid input.")
@@ -24,40 +23,23 @@ function main(boardWidth, boardHeight) {
   return validInput
 }
 
-function boardFoot(, ) {
-  
+
+function boardFoot(boardWidthInt, boardHeightInt, validInput) {
+  const boardLength = 144 / (boardWidthInt * boardHeightInt)
+  console.log('The wood should be ${boardLength} inch(es) long.')
 }
+
 
 // input
 const boardWidth = createPrompt("Enter the width(inches): ")
+const boardWidthInt = parseInt(boardWidth.value || "-1")
 const boardHeight = createPrompt("Enter the height(inches):")
+const boardHeightInt = parseInt(boardHeight.value || "-1")
 
 // Process
-main(someNumber)
-boardFoot(someNumber)
-
-// constants & variables
-
-while (1) {
-  // input
-  const userGuess = createPrompt("Guess a number between 1 - 6: ")
-  const userGuessInt = parseInt(userGuess.value || "-1")
-  // error check
-  if (isNaN(userGuessInt) == true || userGuessInt < 1 || userGuessInt > 6) {
-    console.log("Invalid input. (This won’t count as a guess)\n")
-  } else {
-    // process
-    totalGuesses += 1
-    if (userGuessInt > randomNumber) {
-      console.log(`You guessed too high, try again!\n`)
-    } else if (userGuessInt < randomNumber) {
-      console.log(`You guessed too low, try again!\n`)
-    } else {
-      // output
-      console.log(`Correct!\nTotal guesses: ${totalGuesses}`)
-      break
-    }
-  }
+main(boardWidthInt, boardHeightInt)
+if (validInput) {
+  boardFoot(boardWidthInt, boardHeightInt)
 }
 
 console.log("\nDone.")
