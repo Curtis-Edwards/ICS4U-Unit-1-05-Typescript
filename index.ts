@@ -25,7 +25,7 @@ function main(boardWidthFloat, boardHeightFloat) {
 
 
 function boardFoot(boardWidthFloat, boardHeightFloat) {
-  const boardLength = 144 / (boardWidthInt * boardHeightInt)
+  const boardLength = 144 / (boardWidthFloat * boardHeightFloat)
   console.log('The wood should be ${boardLength} inch(es) long.')
 }
 
@@ -37,9 +37,9 @@ const boardHeight = createPrompt("Enter the height(inches):")
 const boardHeightFloat = parseFloat(boardHeight.value || "-1")
 
 // Process
-main(boardWidthInt, boardHeightInt)
+main(boardWidthFloat, boardHeightFloat)
 if (validInput) {
-  boardFoot(boardWidthInt, boardHeightInt)
+  boardFoot(boardWidthFloat, boardHeightFloat)
 }
 
 console.log("\nDone.")
