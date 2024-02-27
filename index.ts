@@ -15,10 +15,8 @@ function main(boardWidthFloat, boardHeightFloat) {
   let validInput = true 
   if (isNaN(boardWidthFloat) == true || boardWidthFloat < 0) {
     validInput = false
-    console.log("Invalid input.")
   } else if (isNaN(boardHeightFloat) == true || boardHeightFloat < 0) {
     validInput = false
-    console.log("Invalid input.")
   }
   return validInput
 }
@@ -26,7 +24,7 @@ function main(boardWidthFloat, boardHeightFloat) {
 
 function boardFoot(boardWidthFloat, boardHeightFloat) {
   const boardLength = 144 / (boardWidthFloat * boardHeightFloat)
-  console.log('The wood should be ${boardLength} inch(es) long.')
+  return boardLength
 }
 
 
@@ -37,9 +35,13 @@ const boardHeight = createPrompt("Enter the height(inches):")
 const boardHeightFloat = parseFloat(boardHeight.value || "-1")
 
 // Process
-main(boardWidthFloat, boardHeightFloat)
-if (validInput) {
-  boardFoot(boardWidthFloat, boardHeightFloat)
+const validInput = main(boardWidthFloat, boardHeightFloat)
+if (!validInput) {
+  console.log("Invalid input.")
+} else {
+  const boardLength = boardFoot(boardWidthFloat, boardHeightFloat)
+  // output
+  console.log('The wood should be ${boardLength} inch(es) long.')
 }
 
 console.log("\nDone.")
