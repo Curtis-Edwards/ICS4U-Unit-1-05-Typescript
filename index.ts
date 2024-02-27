@@ -31,7 +31,7 @@ function boardFoot(boardWidthFloat, boardHeightFloat) {
 // input
 const boardWidth = createPrompt("Enter the width(inches): ")
 const boardWidthFloat = parseFloat(boardWidth.value || "-1")
-const boardHeight = createPrompt("Enter the height(inches):")
+const boardHeight = createPrompt("Enter the height(inches): ")
 const boardHeightFloat = parseFloat(boardHeight.value || "-1")
 
 // Process
@@ -41,7 +41,7 @@ if (!validInput) {
 } else {
   const boardLength = boardFoot(boardWidthFloat, boardHeightFloat)
   // output
-  console.log('The wood should be ${boardLength} inch(es) long.')
+  console.log(`The wood should be ${boardLength} inch(es) long.`)
 }
 
 console.log("\nDone.")
