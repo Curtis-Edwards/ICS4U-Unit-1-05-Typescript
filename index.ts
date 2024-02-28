@@ -10,15 +10,25 @@
 import { createPrompt } from 'bun-promptx'
 
 
-function main(boardWidthFloat, boardHeightFloat) {
+function main() {
+  // input
+  const boardWidth = createPrompt("Enter the width(inches): ")
+  const boardWidthFloat = parseFloat(boardWidth.value || "-1")
+  const boardHeight = createPrompt("Enter the height(inches): ")
+  const boardHeightFloat = parseFloat(boardHeight.value || "-1")
+
   // error check
   let validInput = true 
   if (isNaN(boardWidthFloat) == true || boardWidthFloat < 0) {
+    console.log("Invalid input.")
     validInput = false
   } else if (isNaN(boardHeightFloat) == true || boardHeightFloat < 0) {
+    console.log("Invalid input.")
     validInput = false
+  } else {
+    let boardLength = boardFoot(boardWidthFloat, boardHeightFloat)
+    console.log(`The wood should be ${boardLength} inch(es) long.`)
   }
-  return validInput
 }
 
 
@@ -27,21 +37,5 @@ function boardFoot(boardWidthFloat, boardHeightFloat) {
   return boardLength
 }
 
-
-// input
-const boardWidth = createPrompt("Enter the width(inches): ")
-const boardWidthFloat = parseFloat(boardWidth.value || "-1")
-const boardHeight = createPrompt("Enter the height(inches): ")
-const boardHeightFloat = parseFloat(boardHeight.value || "-1")
-
-// Process
-const validInput = main(boardWidthFloat, boardHeightFloat)
-if (!validInput) {
-  console.log("Invalid input.")
-} else {
-  const boardLength = boardFoot(boardWidthFloat, boardHeightFloat)
-  // output
-  console.log(`The wood should be ${boardLength} inch(es) long.`)
-}
 
 console.log("\nDone.")
