@@ -9,7 +9,6 @@
 
 import { createPrompt } from 'bun-promptx'
 
-
 function main() {
   // input
   const boardWidth = createPrompt("Enter the width(inches): ")
@@ -27,15 +26,17 @@ function main() {
     validInput = false
   } else {
     let boardLength = boardFoot(boardWidthFloat, boardHeightFloat)
+    // output
     console.log(`The wood should be ${boardLength} inch(es) long.`)
   }
 }
 
-
+// process
 function boardFoot(boardWidthFloat, boardHeightFloat) {
   const boardLength = 144 / (boardWidthFloat * boardHeightFloat)
   return boardLength
 }
 
+main()
 
 console.log("\nDone.")
