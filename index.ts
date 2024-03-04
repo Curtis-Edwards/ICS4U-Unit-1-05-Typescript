@@ -9,7 +9,7 @@
 
 import { createPrompt } from 'bun-promptx'
 
-function boardFoot(boardWidthFloat, boardHeightFloat) {
+function boardFoot(boardWidthFloat: number, boardHeightFloat: number) {
   // this function calculates the length of a boardFoot
   const boardFoot = 144
   const boardLength = boardFoot / (boardWidthFloat * boardHeightFloat)
